@@ -31,7 +31,7 @@ The fileCheck parameter is the specific file that we are looking for in the last
 In order to get a successful build of the pipeline. Simply update the test2.ace file (since that is the file we are looking for) and commit to the repo.
 
 ```
-echo "update: $(date +%Y-%m-%d)" > deployment/test2.ace
+echo "update: $(date +%Y-%m-%d)" >> deployment/test2.ace
 git add --all
 git commit -m "updated file of interest"
 git push origin
