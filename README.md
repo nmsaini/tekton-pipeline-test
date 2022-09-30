@@ -26,7 +26,7 @@ tkn pipeline start build-if-filecommited \
 
 If you are working in your own repo, you will need a copy of the script/check-file-commit.sh in your own repo. This script execution will either be successful (when finding the specific file in the commit log) or failing (when file is not in the last commit log). This has an effect of either passing/continuing the pipeline or failing and thus stopping/erroring out) the pipeline. The full pipeline is not shown here, this is simply a concept.
 
-The fileCheck parameter is the specific file that we are looking for in the last commit. All the other files in the repo are just there was testing various tests and are not needed. 
+The fileCheck parameter is the specific file that we are looking for in the last commit. All the other files in the repo are just there for testing various tests and are not needed. 
 
 In order to get a successful build of the pipeline. Simply update the test2.ace file (since that is the file we are looking for) and commit to the repo.
 
