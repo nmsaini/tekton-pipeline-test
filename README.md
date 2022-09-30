@@ -18,7 +18,7 @@ oc -n $NS create -f tekton/pvc-pipeline-storage.yaml
 ## 3. start the pipeline
 ```
 tkn pipeline start build-if-filecommited \
-    --workspace name=git-source,claimName=pipelines-001 \
+    --workspace name=git-source,claimName=pipelines-storage-001 \
     --param fileCheck=test2.ace --showlog
 ```
 
