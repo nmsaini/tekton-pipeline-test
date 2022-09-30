@@ -1,0 +1,60 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-if-filecommited
+  namespace: cp4i
+spec:
+  params:
+  - default: test.txt
+    name: fileCheck
+    type: string
+  tasks:
+  - name: git-clone
+    params:
+    - name: url
+      value: https://github.com/nmsaini/tekton-pipeline-test.git
+    - name: submodules
+      value: "true"
+    - name: depth
+      value: "2"
+    - name: sslVerify
+      value: "true"
+    - name: crtFileName
+      value: ca-bundle.crt
+    - name: deleteExisting
+      value: "true"
+    - name: verbose
+      value: "true"
+    - name: gitInitImage
+      value: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:cadf614a6044ee37397de3abe7674827ecab225e7fac9fb123eff5473e2c4003
+    - name: userHome
+      value: /tekton/home
+    taskRef:
+      kind: ClusterTask
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: git-source
+  - name: check-if-filecommited
+    params:
+    - name: BASE_IMAGE
+      value: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:cadf614a6044ee37397de3abe7674827ecab225e7fac9fb123eff5473e2c4003
+    - name: GIT_SCRIPT
+      value: |2+
+
+    - name: USER_HOME
+      value: /tekton/home
+    - name: VERBOSE
+      value: "true"
+    - name: checkFile
+      value: $(params.fileCheck)
+    runAfter:
+    - git-clone
+    taskRef:
+      kind: Task
+      name: git-checkifcommited
+    workspaces:
+    - name: source
+      workspace: git-source
+  workspaces:
+  - name: git-source
