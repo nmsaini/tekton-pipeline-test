@@ -5,7 +5,6 @@ metadata:
     tekton.dev/displayName: git cli
     tekton.dev/tags: git
   name: git-checkifcommited
-  namespace: cp4i
 spec:
   description: |-
     This task can be used to perform git operations.
