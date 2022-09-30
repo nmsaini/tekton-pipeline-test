@@ -11,7 +11,7 @@ spec:
     This task can be used to perform git operations.
     Git command that needs to be run can be passed as a script to the task. This task needs authentication to git in order to push after the git operation.
   params:
-  - default: docker.io/alpine/git:v2.26.2@sha256:23618034b0be9205d9cc0846eb711b12ba4c9b468efdd8a59aac1d7b1a23363f
+  - default: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:cadf614a6044ee37397de3abe7674827ecab225e7fac9fb123eff5473e2c4003
     description: |
       The base image for the task.
     name: BASE_IMAGE
