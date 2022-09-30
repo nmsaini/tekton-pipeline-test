@@ -2,7 +2,6 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: build-if-filecommited
-  namespace: cp4i
 spec:
   params:
   - default: test.txt
