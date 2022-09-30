@@ -8,6 +8,7 @@ filelist=$(echo $(git log -p | grep commit | head -2 | cut -f2 -d' ') | while re
 if [[ $filelist == *"${FILE2CHECK}"* ]]; then
     echo "Got file interested in!"
 else
-    echo "File $FILE2CHECK not found!"
+    echo "==== File $FILE2CHECK not found! ===="
+    echo "==== Exiting with ERR 99 ===="
     exit 99
 fi
