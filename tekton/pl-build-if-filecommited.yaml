@@ -4,14 +4,14 @@ metadata:
   name: build-if-filecommited
 spec:
   params:
-  - default: test.txt
+  - default: test2.ace
     name: fileCheck
     type: string
   tasks:
   - name: git-clone
     params:
     - name: url
-      value: https://github.com/nmsaini/tekton-pipeline-test.git
+      value: https://github.ibm.com/nsaini-us/tekton-pipeline-test.git
     - name: submodules
       value: "true"
     - name: depth
@@ -46,7 +46,7 @@ spec:
     - name: VERBOSE
       value: "true"
     - name: checkFile
-      value: $(params.fileCheck)
+      value: $(params.checkFile)
     runAfter:
     - git-clone
     taskRef:

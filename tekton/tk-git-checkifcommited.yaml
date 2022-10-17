@@ -40,7 +40,7 @@ spec:
     description: Log the commands that are executed during `git-clone`'s operation.
     name: VERBOSE
     type: string
-  - default: test.txt
+  - default: test2.ace
     description: check if file is commited
     name: checkFile
     type: string
@@ -96,7 +96,7 @@ spec:
       git config --global user.email "$(params.GIT_USER_EMAIL)"
       git config --global user.name "$(params.GIT_USER_NAME)"
 
-      scripts/check-file-commit.sh "$(params.checkFile)"
+      scripts/check-file-commit.sh "${FILE2CHECK}"
       echo "==== Found File in committed list! ===="
 
       RESULT_SHA="$(git rev-parse HEAD | tr -d '\n')"
